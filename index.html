@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Patient Forms — Carolina Wellness Psychiatry, PLLC</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="proto-banner" role="note">
+  <strong>Prototype preview.</strong> This is a design mock-up for the redesigned New Patient Forms page.
+  It does <strong>not</strong> transmit or store anything to a server &mdash; do not enter real personal or health information.
+</div>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="https://carolinawellnesspsychiatry.com/">
+      <span class="brand__name">Carolina Wellness Psychiatry</span>
+      <span class="brand__sub">PLLC &middot; Chapel Hill, NC</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="https://carolinawellnesspsychiatry.com/contents/about-us/">About Us</a>
+      <a href="https://carolinawellnesspsychiatry.com/contents/services/">Services</a>
+      <a href="https://carolinawellnesspsychiatry.com/contents/fees-and-insurance/">Fees &amp; Insurance</a>
+      <a href="#" aria-current="page">New Patient Forms</a>
+      <a href="https://carolinawellnesspsychiatry.com/contents/contact-us/">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="page-intro">
+    <p class="eyebrow">Patient Info</p>
+    <h1>New Patient Forms</h1>
+    <p class="lede">
+      Complete your intake paperwork online before your first appointment. Your progress is saved
+      in this browser as you go, so you can stop and return to finish later.
+    </p>
+  </div>
+
+  <!-- Draft-restore notice -->
+  <div id="draftNotice" class="notice notice--info" hidden>
+    <span>We restored your saved progress on this device.</span>
+    <button type="button" id="clearDraftBtn" class="link-btn">Start over</button>
+  </div>
+
+  <div class="layout">
+
+    <!-- Progress rail -->
+    <nav class="steps" id="stepNav" aria-label="Form sections">
+      <ol>
+        <li><button type="button" data-goto="0" class="steps__item is-current">Welcome</button></li>
+        <li><button type="button" data-goto="1" class="steps__item">1 &middot; Patient Information</button></li>
+        <li><button type="button" data-goto="2" class="steps__item">2 &middot; Medical History</button></li>
+        <li><button type="button" data-goto="3" class="steps__item">3 &middot; Financial &amp; Appointment Policy</button></li>
+        <li><button type="button" data-goto="4" class="steps__item">4 &middot; Privacy Practices &amp; Acknowledgement</button></li>
+        <li><button type="button" data-goto="5" class="steps__item">5 &middot; Release of Information <em>(optional)</em></button></li>
+        <li><button type="button" data-goto="6" class="steps__item">Review &amp; Submit</button></li>
+      </ol>
+    </nav>
+
+    <form id="intakeForm" novalidate>
+
+      <!-- ============================================================ -->
+      <!-- STEP 0 — WELCOME -->
+      <!-- ============================================================ -->
+      <section class="step is-active" data-step="0" aria-labelledby="s0-h">
+        <h2 id="s0-h">Before you begin</h2>
+        <p>This packet takes about <strong>15&ndash;20 minutes</strong>. You&rsquo;ll complete:</p>
+        <ol class="checklist">
+          <li>Patient information &mdash; contact, emergency contact, and referral details</li>
+          <li>Medical history &mdash; medications, diagnoses, allergies, and what brings you in</li>
+          <li>Financial &amp; appointment policy &mdash; including the card kept on file</li>
+          <li>Notice of Privacy Practices and your acknowledgement</li>
+          <li>Release of Information &mdash; only if you want records exchanged with others</li>
+        </ol>
+        <p class="muted">Have handy: your insurance card (for the superbill), a list of current medications and
+          dosages, and the name and contact information of your primary care provider.</p>
+
+        <div class="field field--check">
+          <label>
+            <input type="checkbox" name="begin_ack" data-nosave required>
+            I understand this is intake paperwork for Carolina Wellness Psychiatry and that the practice
+            is out-of-network with all insurance plans.
+          </label>
+        </div>
+
+        <div class="step-actions">
+          <span></span>
+          <button type="button" class="btn btn--primary" data-next>Start</button>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- STEP 1 — PATIENT INFORMATION (INTAKE FORM) -->
+      <!-- ============================================================ -->
+      <section class="step" data-step="1" aria-labelledby="s1-h">
+        <h2 id="s1-h">1 &middot; Patient Information</h2>
+
+        <fieldset>
+          <legend>Patient demographics</legend>
+          <div class="grid">
+            <div class="field span-2">
+              <label for="p_last">Last name</label>
+              <input id="p_last" name="p_last" autocomplete="family-name" required>
+            </div>
+            <div class="field span-2">
+              <label for="p_first">First name</label>
+              <input id="p_first" name="p_first" autocomplete="given-name" required>
+            </div>
+            <div class="field span-1">
+              <label for="p_mi">Middle initial</label>
+              <input id="p_mi" name="p_mi" maxlength="1">
+            </div>
+            <div class="field span-3">
+              <label for="p_email">Email address</label>
+              <input id="p_email" name="p_email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field span-2">
+              <label for="p_dob">Date of birth</label>
+              <input id="p_dob" name="p_dob" type="date" autocomplete="bday" required>
+            </div>
+            <div class="field span-1">
+              <label for="p_age">Age</label>
+              <input id="p_age" name="p_age" inputmode="numeric" pattern="\d{0,3}" readonly>
+            </div>
+            <div class="field span-2">
+              <label for="p_sex">Sex</label>
+              <select id="p_sex" name="p_sex" required>
+                <option value="">Select&hellip;</option>
+                <option>Female</option>
+                <option>Male</option>
+              </select>
+            </div>
+            <div class="field span-3">
+              <label for="p_ssn">Social Security number</label>
+              <input id="p_ssn" name="p_ssn" inputmode="numeric" autocomplete="off"
+                     data-nosave pattern="\d{3}-?\d{2}-?\d{4}" placeholder="###-##-####">
+              <p class="hint">Used for insurance superbills. <span data-nosave-note>Not saved with your draft.</span></p>
+            </div>
+            <div class="field span-4">
+              <label for="p_addr">Mailing address</label>
+              <input id="p_addr" name="p_addr" autocomplete="street-address" required>
+            </div>
+            <div class="field span-3">
+              <label for="p_city">City / State</label>
+              <input id="p_city" name="p_city" autocomplete="address-level2" required>
+            </div>
+            <div class="field span-2">
+              <label for="p_zip">ZIP</label>
+              <input id="p_zip" name="p_zip" inputmode="numeric" pattern="\d{5}(-\d{4})?" autocomplete="postal-code" required>
+            </div>
+            <div class="field span-2">
+              <label for="p_marital">Marital status</label>
+              <select id="p_marital" name="p_marital">
+                <option value="">Select&hellip;</option>
+                <option>Single</option><option>Married</option><option>Partnered</option>
+                <option>Separated</option><option>Divorced</option><option>Widowed</option>
+              </select>
+            </div>
+            <div class="field span-2">
+              <label for="p_cell">Cell phone</label>
+              <input id="p_cell" name="p_cell" type="tel" autocomplete="tel" required>
+            </div>
+            <div class="field span-2">
+              <label for="p_work">Work phone</label>
+              <input id="p_work" name="p_work" type="tel">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Financially responsible party</legend>
+          <div class="field field--check">
+            <label><input type="checkbox" name="fr_self" data-toggle-hide="#frDetails"> Same as patient</label>
+          </div>
+          <div id="frDetails" class="grid">
+            <div class="field span-3">
+              <label for="fr_name">Name of financially responsible person(s)</label>
+              <input id="fr_name" name="fr_name">
+            </div>
+            <div class="field span-3">
+              <label for="fr_rel">Relationship to patient</label>
+              <input id="fr_rel" name="fr_rel">
+            </div>
+            <div class="field span-3">
+              <label for="fr_email">Email (if different)</label>
+              <input id="fr_email" name="fr_email" type="email">
+            </div>
+            <div class="field span-3">
+              <label for="fr_cell">Cell phone</label>
+              <input id="fr_cell" name="fr_cell" type="tel">
+            </div>
+            <div class="field span-4">
+              <label for="fr_addr">Address (if different)</label>
+              <input id="fr_addr" name="fr_addr">
+            </div>
+            <div class="field span-2">
+              <label for="fr_city">City / State</label>
+              <input id="fr_city" name="fr_city">
+            </div>
+            <div class="field span-2">
+              <label for="fr_zip">ZIP</label>
+              <input id="fr_zip" name="fr_zip" inputmode="numeric" pattern="\d{5}(-\d{4})?">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Employment / education</legend>
+          <div class="grid">
+            <div class="field span-3">
+              <label for="e_name">Employer / school name</label>
+              <input id="e_name" name="e_name">
+            </div>
+            <div class="field span-3">
+              <label for="e_occ">Occupation</label>
+              <input id="e_occ" name="e_occ">
+            </div>
+            <div class="field span-2">
+              <label for="e_grade">Grade (if student)</label>
+              <input id="e_grade" name="e_grade">
+            </div>
+            <div class="field span-2">
+              <label for="e_city">City / State</label>
+              <input id="e_city" name="e_city">
+            </div>
+            <div class="field span-6">
+              <label for="e_edu">Education / degrees</label>
+              <input id="e_edu" name="e_edu">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Parent / spouse information</legend>
+          <div class="grid">
+            <div class="field span-3">
+              <label for="ps_name">Name</label>
+              <input id="ps_name" name="ps_name">
+            </div>
+            <div class="field span-3">
+              <label for="ps_phone">Phone</label>
+              <input id="ps_phone" name="ps_phone" type="tel">
+            </div>
+            <div class="field span-3">
+              <label for="ps_rel">Relationship to patient</label>
+              <input id="ps_rel" name="ps_rel">
+            </div>
+            <div class="field span-3">
+              <label for="ps_emp">Employer name</label>
+              <input id="ps_emp" name="ps_emp">
+            </div>
+            <div class="field span-3">
+              <label for="ps_emp_phone">Employer phone</label>
+              <input id="ps_emp_phone" name="ps_emp_phone" type="tel">
+            </div>
+            <div class="field span-4">
+              <label for="ps_addr">Address</label>
+              <input id="ps_addr" name="ps_addr">
+            </div>
+            <div class="field span-2">
+              <label for="ps_city">City / State</label>
+              <input id="ps_city" name="ps_city">
+            </div>
+            <div class="field span-2">
+              <label for="ps_zip">ZIP</label>
+              <input id="ps_zip" name="ps_zip" inputmode="numeric" pattern="\d{5}(-\d{4})?">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Emergency contact</legend>
+          <div class="grid">
+            <div class="field span-3">
+              <label for="ec_name">Contact person</label>
+              <input id="ec_name" name="ec_name" required>
+            </div>
+            <div class="field span-3">
+              <label for="ec_rel">Relationship to patient</label>
+              <input id="ec_rel" name="ec_rel" required>
+            </div>
+            <div class="field span-3">
+              <label for="ec_cell">Cell phone</label>
+              <input id="ec_cell" name="ec_cell" type="tel" required>
+            </div>
+            <div class="field span-3">
+              <label for="ec_work">Work phone</label>
+              <input id="ec_work" name="ec_work" type="tel">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How did you hear about us?</legend>
+          <div class="choice-row">
+            <label><input type="checkbox" name="ref_internet"> Internet</label>
+            <label><input type="checkbox" name="ref_friend"> Friend</label>
+            <label><input type="checkbox" name="ref_doctor" data-toggle-show="#refDocName"> Doctor / Psychologist</label>
+          </div>
+          <div class="field" id="refDocName" hidden>
+            <label for="ref_doc_name">Referring doctor / psychologist name</label>
+            <input id="ref_doc_name" name="ref_doc_name">
+          </div>
+        </fieldset>
+
+        <div class="step-actions">
+          <button type="button" class="btn" data-prev>Back</button>
+          <button type="button" class="btn btn--primary" data-next>Continue</button>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- STEP 2 — MEDICAL HISTORY -->
+      <!-- ============================================================ -->
+      <section class="step" data-step="2" aria-labelledby="s2-h">
+        <h2 id="s2-h">2 &middot; Medical History</h2>
+
+        <fieldset>
+          <legend>Primary care</legend>
+          <div class="grid">
+            <div class="field span-3">
+              <label for="pc_phys">Primary care physician</label>
+              <input id="pc_phys" name="pc_phys">
+            </div>
+            <div class="field span-3">
+              <label for="pc_practice">Practice name</label>
+              <input id="pc_practice" name="pc_practice">
+            </div>
+            <div class="field span-4">
+              <label for="pc_addr">Address</label>
+              <input id="pc_addr" name="pc_addr">
+            </div>
+            <div class="field span-2">
+              <label for="pc_phone">Phone</label>
+              <input id="pc_phone" name="pc_phone" type="tel">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Past psychiatric and medical diagnoses</legend>
+          <p class="hint">Please include the year of each diagnosis.</p>
+          <div class="field"><input name="dx_1" aria-label="Past diagnosis 1"></div>
+          <div class="field"><input name="dx_2" aria-label="Past diagnosis 2"></div>
+          <div class="field"><input name="dx_3" aria-label="Past diagnosis 3"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Current medications</legend>
+          <p class="hint">Include dosage and frequency for each.</p>
+          <div id="medList" class="med-list"></div>
+          <button type="button" class="link-btn" id="addMedBtn">+ Add another medication</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Allergies &amp; history</legend>
+          <div class="grid">
+            <div class="field span-6">
+              <label for="mh_allergies">Known allergies</label>
+              <textarea id="mh_allergies" name="mh_allergies" rows="2"></textarea>
+            </div>
+            <div class="field span-6">
+              <label for="mh_illness">Severe illness (childhood to present)</label>
+              <textarea id="mh_illness" name="mh_illness" rows="2"></textarea>
+            </div>
+            <div class="field span-6">
+              <label for="mh_therapy">Previous outpatient / inpatient therapy (specify which)</label>
+              <textarea id="mh_therapy" name="mh_therapy" rows="2"></textarea>
+            </div>
+            <div class="field span-6">
+              <label for="mh_hosp">Previous hospitalizations (include year)</label>
+              <textarea id="mh_hosp" name="mh_hosp" rows="2"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Stressors in the past 1&ndash;2 years</legend>
+          <p class="hint">Check any that apply.</p>
+          <div class="choice-grid" id="stressors"></div>
+          <div class="field">
+            <label for="stress_other">Other (describe)</label>
+            <input id="stress_other" name="stress_other">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Presenting problem</legend>
+          <div class="field">
+            <label for="mh_reason">Reason for visit &mdash; what brings you in?</label>
+            <textarea id="mh_reason" name="mh_reason" rows="4" required></textarea>
+          </div>
+        </fieldset>
+
+        <div class="step-actions">
+          <button type="button" class="btn" data-prev>Back</button>
+          <button type="button" class="btn btn--primary" data-next>Continue</button>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- STEP 3 — FINANCIAL & APPOINTMENT POLICY + GFE -->
+      <!-- ============================================================ -->
+      <section class="step" data-step="3" aria-labelledby="s3-h">
+        <h2 id="s3-h">3 &middot; Financial &amp; Appointment Policy and Good Faith Estimate</h2>
+        <p class="muted">Enter your initials in each box to confirm you have read and agree to that item.</p>
+
+        <div class="policy" data-initial="i1">
+          <div class="policy__text">
+            <h3>1. Medicare / Medicaid status</h3>
+            <p>I am <strong>not</strong> a Medicare or Medicaid patient. I understand I must inform the
+              office if my status changes, as this affects whether the practice can provide services.</p>
+          </div>
+          <label class="policy__initial">
+            <span>Initials</span>
+            <input name="i1" maxlength="4" data-nosave autocomplete="off" required>
+          </label>
+        </div>
+
+        <div class="policy" data-initial="i2">
+          <div class="policy__text">
+            <h3>2. Out-of-network practice</h3>
+            <p>Carolina Wellness Psychiatry does not participate with and is not in network with any
+              insurance plan, nor do we file on your behalf. On request the practice will provide a
+              <em>superbill</em> you may submit to your insurer for possible out-of-network reimbursement.
+              Payment (cash, check, or credit card) is due at the time of service and is
+              <strong>non-refundable</strong>. Returned checks incur a $25 fee. Balances unpaid for more
+              than 60 days may be sent to collections, with an additional 33&#8531;% attorney-fee charge
+              if legal action is required.</p>
+          </div>
+          <label class="policy__initial">
+            <span>Initials</span>
+            <input name="i2" maxlength="4" data-nosave autocomplete="off" required>
+          </label>
+        </div>
+
+        <div class="policy" data-initial="i3">
+          <div class="policy__text">
+            <h3>3. Fee schedule &mdash; effective 01/01/2025</h3>
+            <div class="table-scroll">
+              <table class="fees">
+                <thead><tr><th>Provider</th><th>Service</th><th class="num">Fee</th></tr></thead>
+                <tbody>
+                  <tr><td rowspan="4">Elizabeth Bullard, MD</td><td>New patient &middot; 60 min</td><td class="num">$395</td></tr>
+                  <tr><td>Follow-up &middot; 30 min</td><td class="num">$195</td></tr>
+                  <tr><td>Follow-up &middot; 45 min</td><td class="num">$265</td></tr>
+                  <tr><td>Ketamine &middot; 45 min</td><td class="num">$395</td></tr>
+                  <tr><td rowspan="2">Allison Foroobar, MD</td><td>New patient &middot; 60 min</td><td class="num">$395</td></tr>
+                  <tr><td>Follow-up &middot; 30 min</td><td class="num">$195</td></tr>
+                  <tr><td rowspan="2">Ayumi Nakamura, MD, PhD</td><td>New patient &middot; 60 min</td><td class="num">$395</td></tr>
+                  <tr><td>Follow-up &middot; 55 min</td><td class="num">$345</td></tr>
+                  <tr><td rowspan="2">Sarah Gilbert, PhD</td><td>Individual &middot; 45 min</td><td class="num">$215</td></tr>
+                  <tr><td>Couples &middot; 45 min</td><td class="num">$235</td></tr>
+                  <tr><td rowspan="3">Caroline Hale, LCSW</td><td>New adolescent &middot; 75 min</td><td class="num">$275</td></tr>
+                  <tr><td>New adult &middot; 60 min</td><td class="num">$220</td></tr>
+                  <tr><td>Follow-up &middot; 45 min</td><td class="num">$165</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>I have reviewed the fee schedule above and understand these are the charges for services.</p>
+          </div>
+          <label class="policy__initial">
+            <span>Initials</span>
+            <input name="i3" maxlength="4" data-nosave autocomplete="off" required>
+          </label>
+        </div>
+
+        <div class="policy" data-initial="i4">
+          <div class="policy__text">
+            <h3>4. Card on file &mdash; appointments</h3>
+            <p>I understand that Carolina Wellness Psychiatry will charge the credit card on file the
+              full fee for my appointment.</p>
+          </div>
+          <label class="policy__initial">
+            <span>Initials</span>
+            <input name="i4" maxlength="4" data-nosave autocomplete="off" required>
+          </label>
+        </div>
+
+        <div class="policy" data-initial="i5">
+          <div class="policy__text">
+            <h3>5. Missed &amp; late-cancelled appointments</h3>
+            <p>I understand that Carolina Wellness Psychiatry will charge the credit card on file the
+              full fee for missed appointments, or appointments cancelled with less than 24 hours&rsquo;
+              notice, at the rate of the reserved session.</p>
+          </div>
+          <label class="policy__initial">
+            <span>Initials</span>
+            <input name="i5" maxlength="4" data-nosave autocomplete="off" required>
+          </label>
+        </div>
+
+        <div class="policy policy--plain">
+          <div class="policy__text">
+            <h3>Additional time outside sessions</h3>
+            <p>I understand that any paperwork, phone calls, prescription refills, clerical matters, or
+              professional consultations involving time beyond that of the regularly scheduled session
+              will be billed in fifteen-minute increments.</p>
+          </div>
+        </div>
+
+        <div class="policy policy--plain">
+          <div class="policy__text">
+            <h3>Good Faith Estimate (No Surprises Act)</h3>
+            <p>Because you are an uninsured or self-pay patient, you are entitled to a Good Faith Estimate
+              of expected charges. An estimate based on the services scheduled for you will be provided
+              separately; actual charges may differ if your care changes. You may dispute a bill that
+              exceeds the estimate by $400 or more.</p>
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>Credit card kept on file</legend>
+          <p class="hint">
+            <span data-nosave-note>Not saved with your draft.</span>
+            In the live version this section is replaced by the form platform&rsquo;s
+            PCI-compliant, tokenized payment field &mdash; card numbers are never stored in the page.
+          </p>
+          <div class="grid">
+            <div class="field span-3">
+              <label for="cc_name">Name on card</label>
+              <input id="cc_name" name="cc_name" data-nosave autocomplete="off">
+            </div>
+            <div class="field span-3">
+              <label for="cc_num">Card number</label>
+              <input id="cc_num" name="cc_num" data-nosave autocomplete="off" inputmode="numeric" placeholder="•••• •••• •••• ••••">
+            </div>
+            <div class="field span-2">
+              <label for="cc_exp">Expiration</label>
+              <input id="cc_exp" name="cc_exp" data-nosave autocomplete="off" placeholder="MM/YY">
+            </div>
+            <div class="field span-2">
+              <label for="cc_cvv">CVV</label>
+              <input id="cc_cvv" name="cc_cvv" data-nosave autocomplete="off" inputmode="numeric" placeholder="•••">
+            </div>
+            <div class="field span-2">
+              <label for="cc_zip">Billing ZIP</label>
+              <input id="cc_zip" name="cc_zip" data-nosave autocomplete="off" inputmode="numeric">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Agreement</legend>
+          <p>I have read, understand, and agree to comply fully with the above policies. I recognize and
+            accept full financial responsibility for all professional services rendered.</p>
+          <div class="grid">
+            <div class="field span-3">
+              <label for="fin_print">Print name</label>
+              <input id="fin_print" name="fin_print" required>
+            </div>
+            <div class="field span-3">
+              <label for="fin_date">Date</label>
+              <input id="fin_date" name="fin_date" type="date" required>
+            </div>
+          </div>
+          <div class="sig" data-sig="fin_sig">
+            <label>Signature</label>
+            <div class="sig__pad-wrap">
+              <canvas class="sig__pad" width="600" height="160" aria-label="Signature drawing area"></canvas>
+              <button type="button" class="link-btn sig__clear">Clear</button>
+            </div>
+            <label class="sig__typed">
+              <span>Or type your full legal name as your electronic signature</span>
+              <input name="fin_sig_typed" autocomplete="off">
+            </label>
+            <label class="field--check sig__attest">
+              <input type="checkbox" name="fin_sig_attest" data-nosave required>
+              I intend this to be my legally binding electronic signature.
+            </label>
+            <input type="hidden" name="fin_sig" data-nosave>
+          </div>
+        </fieldset>
+
+        <div class="step-actions">
+          <button type="button" class="btn" data-prev>Back</button>
+          <button type="button" class="btn btn--primary" data-next>Continue</button>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- STEP 4 — NOTICE OF PRIVACY PRACTICES + ACKNOWLEDGEMENT -->
+      <!-- ============================================================ -->
+      <section class="step" data-step="4" aria-labelledby="s4-h">
+        <h2 id="s4-h">4 &middot; Notice of Privacy Practices &amp; Acknowledgement</h2>
+
+        <div class="doc-scroll" tabindex="0" aria-label="Notice of Privacy Practices">
+          <h3>Notice of Privacy Practices</h3>
+          <p>The Health Insurance Portability &amp; Accountability Act of 1996 (&ldquo;HIPAA&rdquo;) is a
+            federal program that requires that all medical records and other individually identifiable
+            health information used or disclosed by us in any form &mdash; whether electronically, on
+            paper, or orally &mdash; are kept properly confidential.</p>
+
+          <h4>Permitted uses &amp; disclosures</h4>
+          <ul>
+            <li><strong>Treatment</strong> &mdash; providing, coordinating, or managing your health care.</li>
+            <li><strong>Payment</strong> &mdash; reimbursement, billing, collection, and utilization review.</li>
+            <li><strong>Health care operations</strong> &mdash; quality assessment, auditing, cost
+              management, and customer service.</li>
+            <li>De-identified health information.</li>
+            <li>Appointment reminders and health-related information.</li>
+            <li>Any other use requires your written authorization, which you may revoke in writing.</li>
+          </ul>
+
+          <h4>Your rights</h4>
+          <ul>
+            <li>Request restrictions on uses and disclosures, including to family or friends.</li>
+            <li>Request confidential communications by alternative means or at alternative locations.</li>
+            <li>Inspect and copy your protected health information.</li>
+            <li>Amend your protected health information.</li>
+            <li>Receive an accounting of disclosures.</li>
+            <li>Obtain a paper copy of this notice.</li>
+          </ul>
+
+          <h4>Effective date &amp; changes</h4>
+          <p>This notice is effective January 1, 2019. The practice reserves the right to change the
+            terms of this notice and to make the new provisions effective for all information it maintains.</p>
+
+          <h4>Complaints</h4>
+          <p>You have the right to file a written complaint with our office, or with the Department of
+            Health &amp; Human Services, Office for Civil Rights, about violations of the provisions of
+            this notice: U.S. Dept. of Health &amp; Human Services, Office for Civil Rights,
+            200 Independence Avenue S.W., Washington, D.C. 20201.</p>
+        </div>
+
+        <fieldset>
+          <legend>Patient acknowledgement</legend>
+          <p>I acknowledge that:</p>
+          <ul class="tight">
+            <li>my health information is private and confidential;</li>
+            <li>the practice works to protect that privacy;</li>
+            <li>my information may be used for treatment, billing, and health care operations;</li>
+            <li>in unusual circumstances the law may require release without my permission;</li>
+            <li>the full Notice of Privacy Practices contains the complete policies and my rights,
+              including access, restrictions, an accounting of disclosures, and communication preferences;</li>
+            <li>the practice has established procedures for exercising those rights.</li>
+          </ul>
+          <div class="field field--check">
+            <label>
+              <input type="checkbox" name="npp_ack" data-nosave required>
+              I have received and reviewed the Notice of Privacy Practices.
+            </label>
+          </div>
+          <div class="grid">
+            <div class="field span-3">
+              <label for="npp_name">Signature of patient / responsible party (print)</label>
+              <input id="npp_name" name="npp_name" required>
+            </div>
+            <div class="field span-3">
+              <label for="npp_date">Date</label>
+              <input id="npp_date" name="npp_date" type="date" required>
+            </div>
+          </div>
+          <div class="sig" data-sig="npp_sig">
+            <label>Signature</label>
+            <div class="sig__pad-wrap">
+              <canvas class="sig__pad" width="600" height="160" aria-label="Signature drawing area"></canvas>
+              <button type="button" class="link-btn sig__clear">Clear</button>
+            </div>
+            <label class="sig__typed">
+              <span>Or type your full legal name as your electronic signature</span>
+              <input name="npp_sig_typed" autocomplete="off">
+            </label>
+            <label class="field--check sig__attest">
+              <input type="checkbox" name="npp_sig_attest" data-nosave required>
+              I intend this to be my legally binding electronic signature.
+            </label>
+            <input type="hidden" name="npp_sig" data-nosave>
+          </div>
+        </fieldset>
+
+        <div class="step-actions">
+          <button type="button" class="btn" data-prev>Back</button>
+          <button type="button" class="btn btn--primary" data-next>Continue</button>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- STEP 5 — RELEASE OF INFORMATION (OPTIONAL) -->
+      <!-- ============================================================ -->
+      <section class="step" data-step="5" aria-labelledby="s5-h">
+        <h2 id="s5-h">5 &middot; Release of Information <span class="tag">Optional</span></h2>
+        <p>Complete this section only if you want Carolina Wellness Psychiatry to exchange information
+          with another person or agency (for example, a therapist, physician, school, or family member).</p>
+
+        <div class="field field--check">
+          <label>
+            <input type="checkbox" name="roi_enabled" data-toggle-show="#roiBody">
+            I want to authorize a release of information.
+          </label>
+        </div>
+
+        <div id="roiBody" hidden>
+          <p class="muted">This authorization covers all clinicians of Carolina Wellness Psychiatry, PLLC:
+            Elizabeth S. Bullard, MD; Allison Foroobar, MD; Ayumi Nakamura, MD, PhD; Sarah E. Gilbert, PhD;
+            Sarah Tatko, PA; M. Caroline Hale, LCSW.</p>
+
+          <fieldset>
+            <legend>Authorization</legend>
+            <div class="grid">
+              <div class="field span-3">
+                <label for="roi_consenter">I, (your name)</label>
+                <input id="roi_consenter" name="roi_consenter">
+              </div>
+              <div class="field span-3">
+                <label for="roi_patient">consent to release / exchange information regarding (patient)</label>
+                <input id="roi_patient" name="roi_patient">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Information to be released</legend>
+            <div class="choice-grid" id="roiCats"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Information may be shared with</legend>
+            <div class="field">
+              <label for="roi_recipients">People / agencies (include addresses)</label>
+              <textarea id="roi_recipients" name="roi_recipients" rows="4"></textarea>
+            </div>
+          </fieldset>
+
+          <div class="policy policy--plain">
+            <div class="policy__text">
+              <p>I understand that this information will be used in the patient&rsquo;s best interests to
+                benefit current psychiatric and psychological evaluation and/or treatment, and that the
+                information exchanged will be handled in a professional and confidential manner.</p>
+              <p>It is the policy of Carolina Wellness Psychiatry, PLLC not to release materials provided
+                by physicians outside this office regarding the patient&rsquo;s former or current care.
+                Second-party records may be obtained by contacting the source directly, and will be
+                released by this office only when no longer available from the original source.</p>
+              <p>I understand that I may revoke this consent at any time, except to the extent that action
+                based on it has already taken place.</p>
+            </div>
+          </div>
+
+          <fieldset>
+            <legend>Signatures</legend>
+            <div class="grid">
+              <div class="field span-3">
+                <label for="roi_witness">Witness</label>
+                <input id="roi_witness" name="roi_witness">
+              </div>
+              <div class="field span-3">
+                <label for="roi_rel">Relationship to patient</label>
+                <input id="roi_rel" name="roi_rel">
+              </div>
+              <div class="field span-3">
+                <label for="roi_date">Date</label>
+                <input id="roi_date" name="roi_date" type="date">
+              </div>
+              <div class="field span-3">
+                <label for="roi_expires">Consent expiration date</label>
+                <input id="roi_expires" name="roi_expires" type="date">
+                <p class="hint">Defaults to 12 months from signing if left blank.</p>
+              </div>
+            </div>
+            <div class="sig" data-sig="roi_sig">
+              <label>Signature</label>
+              <div class="sig__pad-wrap">
+                <canvas class="sig__pad" width="600" height="160" aria-label="Signature drawing area"></canvas>
+                <button type="button" class="link-btn sig__clear">Clear</button>
+              </div>
+              <label class="sig__typed">
+                <span>Or type your full legal name as your electronic signature</span>
+                <input name="roi_sig_typed" autocomplete="off">
+              </label>
+              <input type="hidden" name="roi_sig" data-nosave>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn" data-prev>Back</button>
+          <button type="button" class="btn btn--primary" data-next>Continue</button>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- STEP 6 — REVIEW & SUBMIT -->
+      <!-- ============================================================ -->
+      <section class="step" data-step="6" aria-labelledby="s6-h">
+        <h2 id="s6-h">Review &amp; Submit</h2>
+        <p>Please review your answers. Use <strong>Edit</strong> to jump back to any section.</p>
+
+        <div id="reviewOut" class="review"></div>
+
+        <div class="field field--check">
+          <label>
+            <input type="checkbox" name="final_attest" data-nosave required>
+            I certify that the information I have provided is true and complete to the best of my knowledge.
+          </label>
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn" data-prev>Back</button>
+          <button type="submit" class="btn btn--primary btn--lg">Submit forms</button>
+        </div>
+      </section>
+
+    </form>
+
+    <!-- Success panel -->
+    <section id="successPanel" class="success" hidden>
+      <div class="success__icon" aria-hidden="true">&#10003;</div>
+      <h2>Forms submitted</h2>
+      <p>Thank you. Your intake paperwork has been received. A member of our team will be in touch
+        before your first appointment if anything else is needed.</p>
+      <p class="ref">Reference: <strong id="refNo"></strong></p>
+      <p class="muted">In this prototype nothing was transmitted or stored on a server. In the live
+        version, submission goes to the practice&rsquo;s HIPAA-compliant form platform under a signed
+        Business Associate Agreement.</p>
+      <div class="step-actions">
+        <button type="button" class="btn" id="printBtn">Print / save a copy</button>
+        <button type="button" class="btn btn--primary" id="restartBtn">Start a new form</button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>Carolina Wellness Psychiatry, PLLC</strong><br>
+      400 Meadowmont Village Circle, Suite 428, Chapel Hill, NC 27517<br>
+      919-446-3232</p>
+    <p class="muted">Prototype &mdash; not an official form. &copy; Carolina Wellness Psychiatry, PLLC.</p>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
