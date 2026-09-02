@@ -53,6 +53,8 @@ Full field-level detail lives in the Google Doc above.
 
 ## Prototype
 
+**Live:** https://krivikhullar.github.io/carolinawellnesspsychiatry/ (GitHub Pages, `main` branch).
+
 A working, vendor-independent prototype of the online packet lives at the repo root:
 
 | File | Purpose |
@@ -82,13 +84,15 @@ A working, vendor-independent prototype of the online packet lives at the repo r
 - Submit shows a confirmation with a reference number and a Print / Save-as-PDF option
   (print stylesheet expands every section).
 
-### Preview it locally
+### Preview it
 
-```
-cd carolinawellnesspsychiatry
-python3 -m http.server 8000
-# open http://127.0.0.1:8000/
-```
+- Hosted: https://krivikhullar.github.io/carolinawellnesspsychiatry/
+- Locally:
+  ```
+  cd carolinawellnesspsychiatry
+  python3 -m http.server 8000
+  # open http://127.0.0.1:8000/
+  ```
 
 ### Known deltas from the live version (by design)
 
